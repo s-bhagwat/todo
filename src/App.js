@@ -1,56 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import styles from "./App.module.css";
+import Input from "./Components/Input/Input";
+import ToDoContainer from "./Components/ToDoContainer/ToDoContainer";
+import { Button } from "@material-ui/core";
+
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+
+import { selectTodoList } from "./features/todo/todoSlice";
+import { setRemove } from "./features/todo/todoSlice";
 
 function App() {
+  const todoList = useSelector(selectTodoList);
+  const [removed, setRemoved] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleRemove = () => {
+    dispatch(setRemove());
+    setRemoved(true);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div
+      className={styles.App}
+      style={removed ? { gridTemplateColumns: "repeat(2, 1fr)" } : {}}
+    >
+      <div className={styles.app__container}>
+        <Input />
+        <ToDoContainer todoList={todoList} side="left" />
+        <Button variant="outlined" color="error" onClick={handleRemove}>
+          Remove Completed Tasks
+        </Button>
+      </div>
+      {removed ? (
+        <div className={styles.app__container}>
+          <ToDoContainer todoList={todoList} side="right" />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

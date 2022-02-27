@@ -1,0 +1,25 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(168, 173, 182);
+  display: grid;
+  place-items: center;
+  /* grid-template-columns: repeat(2, 1fr); */
+}
+.app__container {
+  height: min(700px, 80%);
+  width: min(500px, 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(232, 234, 237);
+  border-radius: 12px;
+  padding: 32px 0px;
+}
+.app__todoContainer {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

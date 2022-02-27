@@ -1,0 +1,26 @@
+.todoItem_p {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  background-color: white;
+  margin: 6px 4px;
+  height: 40px;
+  border-radius: 12px;
+}
+.todoItem_d {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  background-color: rgba(209, 33, 33, 0.705);
+  margin: 6px 4px;
+  height: 40px;
+  border-radius: 12px;
+}
+.todoItem > p {
+  flex: 1;
+}
+.todoItem__done {
+  text-decoration: line-through;
+}
+.todoItem__pending {
+}
