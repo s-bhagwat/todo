@@ -37,6 +37,11 @@ function Input() {
     }
   };
 
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+    if (input.length >= 4) setError(false);
+  };
+
   return (
     <>
       <div className={styles.input}>
@@ -44,7 +49,7 @@ function Input() {
           type="text"
           className={styles.text}
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => handleInputChange(e)}
           onKeyPress={(e) => handleInput(e)}
         />
         <button ref={btn} className={styles.button} onClick={addTodo}>

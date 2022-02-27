@@ -25,14 +25,16 @@ function App() {
       style={removed ? { gridTemplateColumns: "repeat(2, 1fr)" } : {}}
     >
       <div className={styles.app__container}>
+        <h1 className={styles.heading}>To-Dos</h1>
         <Input />
         <ToDoContainer todoList={todoList} side="left" />
-        <Button variant="outlined" color="error" onClick={handleRemove}>
+        <Button variant="outlined" color="secondary" onClick={handleRemove}>
           Remove Completed Tasks
         </Button>
       </div>
       {removed ? (
         <div className={styles.app__container}>
+          <h1 className={styles.heading}>Completed Tasks</h1>
           <ToDoContainer todoList={todoList} side="right" />
         </div>
       ) : (
